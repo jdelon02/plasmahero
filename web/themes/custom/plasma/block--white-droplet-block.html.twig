@@ -1,0 +1,16 @@
+<div class="flex-container-1">
+        <div class="droplet-image-container center-align">
+          <a href="#" class="image-link w-inline-block">
+            <div class="droplet-image droplet-4" style="background-image:url({{ file_url(content.field_image['#items'].entity.uri.value) }});">
+              <div class="mask-2"></div>
+            </div>
+          </a>
+        </div>
+        <div class="two-third left-align left-padding">
+		<div class="contextual-region">
+          <h2 class="heading-2 white">{{content.field_title}}</h2>
+         {{ contextual_links('block_content:block_content=9') }}
+		  <div class="paragraph-2">{{content.body}}</div>
+		  </div>
+        </div>
+      </div>

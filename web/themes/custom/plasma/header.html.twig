@@ -1,0 +1,36 @@
+{% set hdirectory = '/themes/plasma/' %}
+  <div class="navbar-container">
+    <div class="navbar">
+      <div data-collapse="none" data-animation="default" data-duration="400" role="banner" class="main-nav w-nav">
+        <div class="main-nav-flex"><a href="/" aria-current="page" class="logo-container w-nav-brand w--current"><img src="{{hdirectory}}images/plasma-hero-logo.svg" alt="Plasma Hero" height="" class="logo"></a>
+          <nav role="navigation" class="nav-menu w-nav-menu"><a href="/" aria-current="page" class="nav-link w-nav-link w--current">Home</a><a href="/about-us" class="nav-link w-nav-link">Origins</a><a href="/hero-stories" class="nav-link w-nav-link">Hero Stories</a><a href="/become-a-hero" class="nav-link w-nav-link">Be Heroic</a>
+            <div class="nav-divider"></div>
+          </nav>
+          <div class="w-nav-button">
+            <div class="w-icon-nav-menu"></div>
+          </div>
+        </div>
+      </div>
+      <div data-collapse="all" data-animation="default" data-duration="400" role="banner" class="hamburger w-nav">
+        <nav role="navigation" class="hamburger-menu w-nav-menu"><a href="/" class="nav-link mobile-links w-nav-link">Home</a><a href="/about-us" class="nav-link mobile-links w-nav-link">Origins</a><a href="/hero-stories" class="nav-link mobile-links w-nav-link">Hero Stories</a><a href="/become-a-hero" class="nav-link mobile-links w-nav-link">Be Heroic</a><a href="/commonly-asked-questions" class="nav-link w-nav-link">Frequently Asked Questions</a><a href="/news-updates" class="nav-link w-nav-link">News &amp; Updates</a><a href="/contact-us" class="nav-link w-nav-link">Contact Us</a></nav>
+      </div>
+      <div data-hover="" data-delay="0" class="dropdown w-dropdown">
+        <div class="dropdown-toggle w-dropdown-toggle">
+          <div class="hamburger-icon w-icon-dropdown-toggle"></div><a href="#" class="hamburger-menu w-inline-block"><img src="{{hdirectory}}images/hamburger-icon.svg" alt=""></a></div>
+        <nav class="dropdown-list w-dropdown-list"><a href="/" class="hamburger-link mobile-only w-dropdown-link">Home</a><a href="/about-us" class="hamburger-link mobile-only w-dropdown-link">Origins</a><a href="/commonly-asked-questions" class="hamburger-link w-dropdown-link">Frequently Asked Questions</a><a href="/hero-stories" class="hamburger-link mobile-only w-dropdown-link">Hero Stories</a><a href="/become-a-hero" class="hamburger-link mobile-only w-dropdown-link">Be Heroic</a><a href="/news-updates" class="hamburger-link w-dropdown-link">News &amp; Updates</a><a href="/contact-us" class="hamburger-link w-dropdown-link">Contact Us</a></nav>
+      </div>
+    </div>
+  </div>
+
+  {% set style = node.field_header_image.entity.fileuri  | image_style('hero_banner')  %}
+  
+  <div class="hero hero-page" style="background-image:url('/themes/plasma/images/hero-mask-1.svg'), url({{file_url(node.field_header_image.entity.fileuri)}});">
+    <div class="main-container">
+      <div class="caption-container">
+        <!--<h3 class="heading-3 white">Plasma Hero Story:</h3>-->
+        <h1 class="heading-1">{{node.label}}</h1>
+        <p class="hero-caption">{{ node.field_subtitle.0.value|raw }}</p>
+      </div>
+    </div>
+  </div>
+  {{ page.help }}

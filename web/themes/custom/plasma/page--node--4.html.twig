@@ -1,0 +1,33 @@
+{% include '/themes/plasma/header.html.twig' %}
+{% set hdirectory = '/themes/plasma/' %}
+<!--<div class="hero commonly-asked-questions">
+    <div class="main-container">
+      <div class="caption-container">
+        <h1 class="heading-1">Commonly Asked Questions</h1>
+        <p class="hero-caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod convallis semp.</p>
+      </div>
+    </div>
+  </div>-->
+  <div class="intro intro-section-2" data-ix="fade-in-on-scroll">
+    <div class="main-container">
+      <div class="heading-section" data-ix="move-up-on-scroll">
+        <div class="contextual-region">
+		  	{{ contextual_links('block_content:block_content=18') }}
+			{{ drupal_block('block_content:932b49d2-0aa9-4af6-afbf-c1a9120092bd') }}
+		</div>
+      </div>
+      <div class="flex-container-4" data-ix="move-up-on-scroll">
+        <div style="display:flex;flex-wrap:wrap;">
+         {% for faq in faqs %}
+		 	<div class="faq-container" style="width:50%;"><img src="/themes/plasma/images/faq-icon.svg" alt="" class="faq-icon">
+            <div>
+              <h2 class="heading-3">{{faq.question}}</h2>
+              {{faq.answer|raw}}
+            </div>
+          </div>
+		 {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% include '/themes/plasma/footer.html.twig' %}

@@ -1,0 +1,55 @@
+{% include '/themes/plasma/header.html.twig' %}
+{% set hdirectory = '/themes/plasma/' %}
+  <div class="intro intro-section-2" data-ix="fade-in-on-scroll">
+    <div class="main-container">
+      <div class="heading-section" data-ix="move-up-on-scroll">
+        {{ node.field_top_text.0.value|raw }}
+      </div>
+      <div class="flex-container-4" data-ix="move-up-on-scroll">
+        <div class="half">
+		 {{ node.body.0.value|raw }}
+        </div>
+        <div class="half">
+          {{ node.field_body.0.value|raw }}
+        </div>
+      </div>
+      <div class="media-container" data-ix="move-up-on-scroll">
+        <div style="padding-top:56.17021276595745%" class="video w-video w-embed">{{ node.field_video_embed_code.0.value|raw }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="red-orange-section" data-ix="fade-in-on-scroll">
+    <div class="main-container center-align" data-ix="move-up-on-scroll">
+      <h2 class="heading-2 white">More Heroes</h2>
+    </div>
+    <div class="slider-container" data-ix="move-up-on-scroll">
+      <div data-delay="3000" data-animation="slide" data-autoplay="1" data-duration="1000" data-infinite="1" class="slider w-slider">
+        <div class="slide-mask w-slider-mask">
+           {% for hero in alhero %}
+		   {% if hero.nid != node.id%}
+          <div class="slide w-slide">
+            <a href="{{ path('entity.node.canonical', {'node': hero.nid})}}" class="hero-card hero-3 w-inline-block">
+              <div class="hero-thumb-container">
+                <div class="hero-thumb hero-1" style="background-image:url({{ hero.img|image_style('newsbg') }});"></div>
+              </div>
+              <p class="hero-quote">{{hero.subtitle}}</p>
+              <h2 class="heading-3">{{hero.title}}</h2>
+              <p class="caption-text">{{hero.location}}</p>
+            </a>
+          </div>
+		  {% endif %}
+		  {% endfor %}
+		  
+        </div>
+        <div class="left-arrow w-slider-arrow-left">
+          <div class="icon-2 w-icon-slider-left"></div>
+        </div>
+        <div class="right-arrow w-slider-arrow-right">
+          <div class="icon-3 w-icon-slider-right"></div>
+        </div>
+        <div class="slide-nav-2 w-slider-nav w-round"></div>
+      </div>
+    </div>
+  </div>
+  {{ drupal_block('block_content:8d6f4ed5-32b5-4d42-8599-8af5daeb9dc3') }}
+  {% include '/themes/plasma/footer.html.twig' %}

@@ -1,0 +1,94 @@
+a {
+  color: #d56651;	
+}
+div.paragraph-2 p {
+  color:white !important;	
+}
+.form-wrapper {
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.form-wrapper .form-item-message {
+  width:100% !important;	
+}
+.form-item, .form-actions {
+  margin-bottom:0px !important;	
+}
+.button {
+  border:0px;
+  color:white;
+}
+.footer .form-submit {
+  width:100%;
+}
+.footer .form-item, .form-actions {
+  margin:0px !important;	
+}
+.footer .footer-form-field {
+  color:white;	
+}
+.footer-block p {
+  color:white;	
+}
+.news-card-container {
+  width:48.5%;
+  min-width:300px;
+  max-width:100%;
+}
+.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix {
+  background-color:#fff;
+  border:none;
+  background-image:url(/themes/plasma/images/plasma-bg-1.svg);
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:100%;
+  max-height:36px;
+}
+.webform-confirmation-modal--content.ui-dialog-content.ui-widget-content {
+  background-image:url(/themes/plasma/images/plasma-bg-2.svg);	
+  background-size:200px;
+  background-repeat:no-repeat;
+  padding-bottom:46px;
+  text-align:center;
+  background-position-x:0px;
+  background-position-y:100%;
+}
+.red-orange-section .hero-card h2 {
+	margin-bottom: 20px;
+    font-size: 48px;
+    line-height: 1em;
+	color:#4d4d4d;
+}
+.hero-card {
+  height:600px;	
+}
+.main-container {
+  width: 90%;
+  max-width:unset !important;
+}
+.caption-container {
+  margin-right: 60%;
+}
+@media screen and (max-width: 1025px) {
+	.slide {
+	  width:50%;	
+	}
+	.news-card-container {
+	  width:48.5%;	
+	}
+}
+@media screen and (max-width: 991px){
+	.slide {
+	  width:100%;	
+	}
+	.news-card-container {
+	  width:100%;	
+	}
+	.faq-container {
+	  width:100% !important;
+	}
+	.caption-container {
+	  margin-right:0px;	
+	}
+}

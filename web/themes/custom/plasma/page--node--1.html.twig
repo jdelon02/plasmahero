@@ -1,0 +1,70 @@
+{% include '/themes/plasma/header.html.twig' %}
+  {% set hdirectory = '/themes/plasma/' %}
+<!--<div class="hero about">
+    <div class="main-container">
+      <div class="caption-container">
+        <h1 class="heading-1">Our Origins</h1>
+        <p class="hero-caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod convallis semp.</p>
+      </div>
+    </div>
+  </div>-->
+  <div class="intro intro-section-2" data-ix="fade-in-on-scroll">
+    <div class="main-container" data-ix="move-up-on-scroll">
+      <div class="heading-section">
+	  	<div class="contextual-region">
+		  	{{ contextual_links('block_content:block_content=14') }}
+			{{ drupal_block('block_content:fb2e7404-e544-4fed-bc15-a9f946d71851') }}
+		</div>
+      </div>
+      <div class="flex-container-4">
+	  <div class="half">
+	  	{{node.field_body_left.value|raw}}
+	  </div>
+	  <div class="half">
+	  	{{node.body.value|raw}}
+	  </div>
+      </div>
+    </div>
+  </div>
+  <!--<div class="red-orange-section section-1" data-ix="fade-in-on-scroll">
+    <div class="main-container center-align">
+      <div class="flex-container-2">
+        <div class="two-third left-align white" data-ix="move-up-on-scroll">
+		  <div class="contextual-region">
+      {{ contextual_links('block_content:block_content=3') }}
+      <div class="paragraph-2">{{ drupal_block('block_content:91c9743f-52e1-493d-9d36-47d4afcb3716') }}</div>
+  </div>
+  <a href="/commonly-asked-questions" class="button button-2 w-button">Choose</a></div>
+        <div class="droplet-image-container center-align" data-ix="move-up-on-scroll">
+          <a href="/commonly-asked-questions" class="image-link w-inline-block">
+            <div class="droplet-image droplet-3">
+              <div class="mask-2"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>-->
+  {{ drupal_block('block_content:91c9743f-52e1-493d-9d36-47d4afcb3716') }}
+  <div class="intro" data-ix="fade-in-on-scroll">
+    <div class="main-container" data-ix="move-up-on-scroll">
+      <div class="flex-container-4">
+        <div class="half">
+          <h2 class="heading-2">About IDF</h2>
+          <div class="contextual-region">
+      		{{ contextual_links('block_content:block_content=4') }}
+      		{{ drupal_block('block_content:a7640b3f-1862-41d9-ba5c-15cae7cffc83') }}
+          </div>
+		</div>
+        <div class="half">
+          <h2 class="heading-3">Support IDF</h2>
+           <div class="contextual-region">
+      		{{ contextual_links('block_content:block_content=5') }}
+      		{{ drupal_block('block_content:a00e5fc7-4067-4f6c-81a1-e046be448cc0') }}
+          </div>
+		  <a href="https://primaryimmune.org/Donation-to-IDF-Appeal" target="_blank" aria-current="page" class="button w-button w--current">Support</a></div>
+      </div>
+    </div>
+    <div class="after-intro-bg"></div>
+  </div>
+  {% include '/themes/plasma/footer.html.twig' %}

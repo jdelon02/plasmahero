@@ -1,0 +1,54 @@
+{% include '/themes/plasma/header.html.twig' %}
+  {{ drupal_block('block_content:8d6f4ed5-32b5-4d42-8599-8af5daeb9dc3') }}
+  <div class="intro" data-ix="fade-in-on-scroll">
+    <div class="main-container">
+{{drupal_block('block_content:f63f0a10-0ea0-4677-8c3c-a4c141622647') }}
+      <div class="flex-container-2" data-ix="move-up-on-scroll">
+        <div class="two-third right-align right-padding" >
+		{% for hero in heroFields %}
+<div class="contextual-region">
+		  {{ contextual_links('block_content:block_content=13') }}
+{{ drupal_block('block_content:03cd32c4-6f20-4f5a-a578-ef7208873183') }}
+</div>
+			  {{hero.body|raw}}
+          <div class="button-container"><a href="{{ path('entity.node.canonical', {'node': hero.nid})}}" class="button button-1 w-button">View Hero</a><a href="/hero-stories" class="button accent-button w-button">View All Heroes</a></div>
+		  
+        </div>
+        <div class="droplet-image-container center-align" data-ix="move-up-on-scroll">
+          <a href="{{ path('entity.node.canonical', {'node': hero.nid})}}" class="image-link w-inline-block">
+            <div class="droplet-image droplet-2" style="background-image:url({{ hero.img|image_style('droplet') }});">
+              <div class="mask-1"></div>
+            </div>
+            <h3 class="heading-3">{{ hero.title }}</h3>
+            <p>{{ hero.location }}</p>
+          </a>
+        </div>
+		{% endfor %}
+      </div>
+    </div>
+    <div class="after-intro-bg"></div>
+  </div>
+  <div class="red-orange-section" data-ix="fade-in-on-scroll">
+    <div class="main-container center-align" data-ix="move-up-on-scroll">
+      <div class="flex-container-3">
+		<div class="contextual-region">
+		  {{ contextual_links('block_content:block_content=11') }}
+          <div class="paragraph-2">{{ drupal_block('block_content:1cbead8f-05cb-455f-a497-8a30e15da9ec') }}</div>
+		  </div>
+       <a href="/become-a-hero" class="button button-2 w-button">Ready to be a hero?</a></div>
+    </div>
+  </div>
+  </div>
+  <div class="news" data-ix="fade-in-on-scroll">
+    <div class="main-container center-align" data-ix="move-up-on-scroll">
+      <h2 class="heading-2 white">News &amp; Updates</h2>
+	  <div class="contextual-region">
+	  {{ contextual_links('block_content:block_content=2') }}
+      <div class="paragraph-2">{{drupal_block('block_content:f1423fb6-42d7-462f-92b9-0bfa8e6b596c') }}</div>
+	  </div>
+    </div>
+    <div class="slider-container" data-ix="move-up-on-scroll">
+      {% include '/themes/plasma/slider.html.twig' %}
+    </div>
+  </div>
+{% include '/themes/plasma/footer.html.twig' %}

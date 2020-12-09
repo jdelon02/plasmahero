@@ -1,0 +1,59 @@
+  {% set hdirectory = '/themes/plasma/' %}
+<div class="footer">
+    <div class="main-container">
+      <div class="footer-container">
+        <div class="third">
+          <div class="footer-block"><img src="{{ hdirectory }}images/plasma-hero-logo-2.svg" alt="Plasma Hero" class="footer-logo"><a href="tel:8002964433" class="footer-link-container w-inline-block"><img src="{{ hdirectory }}images/phone-icon.svg" alt="" class="footer-icon"><div class="footer-link">800.296.4433</div></a><a href="mailto:hello@plasmahero.org" class="footer-link-container w-inline-block"><img src="{{ hdirectory }}images/mail-icon.svg" alt="" class="footer-icon"><div class="footer-link">hello@plasmahero.org</div></a><a href="/contact-us" class="button button-3 w-button">Contact Us</a></div>
+          <div class="footer-block">
+            <h5 class="heading-5">Follow Us</h5>
+            <div class="social-links-container"><a href="https://www.facebook.com/beaplasmahero" target="_blank" class="social-icon facebook w-inline-block"></a><a href="https://twitter.com/IDFCommunity" target="_blank" class="social-icon twitter w-inline-block"></a><a href="https://www.instagram.com/beaplasmahero/" target="_blank" class="social-icon instagram w-inline-block"></a></div>
+          </div>
+        </div>
+        <div class="third">
+          <div class="footer-block">
+            <h5 class="heading-5">Sitemap</h5>
+            <div class="sitemap-container">
+              <div class="sitemap-column">
+                <div><a href="/" aria-current="page" class="footer-link w--current">Home</a></div>
+                <div><a href="/origins" class="footer-link">Origins</a></div>
+                <div><a href="/frequently-asked-questions" class="footer-link">Frequently Asked Questions</a></div>
+              </div>
+              <div class="sitemap-column">
+                <div><a href="/hero-stories" class="footer-link">Hero Stories</a></div>
+                <div><a href="/become-a-hero" class="footer-link">Be Heroic</a></div>
+                <div><a href="/news-updates" class="footer-link">News &amp; Updates</a></div>
+                <div><a href="/contact-us" class="footer-link">Contact Us</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-block">
+            <div><a href="https://primaryimmune.org/" target="_blank" class="footer-link">An initiative of the Immune Deficiency Foundation, a 501 (c)(3) organization (EIN: 52-1214782)</a></div>
+	    <div class="legal-text">© 2020 Plasma Hero. All rights reserved. <a href="/privacy-policy" class="footer-link">Privacy Policy</a></div>
+          </div>
+        </div>
+        <div class="third">
+          <div class="footer-block">
+            <h5 class="heading-5">Newsletter Sign Up</h5>
+			<div class="contextual-region">
+		  {{ contextual_links('block_content:block_content=12') }}
+          <div style="color:white;">{{ drupal_block('block_content:4c5a72a3-d391-4157-9c41-a80fd164fc66') }}</div>
+		  </div>
+          </div>
+          <div class="w-form">
+		  {{ drupal_entity('webform', 'subscribe') }}
+            <!--<form id="wf-form-Newsletter-Signup" name="wf-form-Newsletter-Signup" data-name="Newsletter Signup" class="footer-form"><label for="Email-2" class="footer-form-label">Email</label><input type="email" class="footer-form-field w-input" maxlength="256" name="Email-2" data-name="Email 2" placeholder="Email" id="Email-2" required=""><input type="submit" value="Subscribe" data-wait="Please wait..." class="footer-form-button w-button"></form>-->
+            <div class="w-form-done">
+              <div>Thank you! Your submission has been received!</div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="socket">
+    <a href="http://mojo.biz" target="_blank" class="socket-container w-inline-block">
+      <div class="logotext">Powered By:</div><img src="{{ hdirectory }}images/Mojo-Logo.png" alt="Mojo Creative Digital"></a>
+  </div>

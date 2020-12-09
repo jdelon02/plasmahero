@@ -1,0 +1,46 @@
+{% include '/themes/plasma/header.html.twig' %}
+{{ page['tabs'] }}
+      <div class="intro intro-section-2 news-section" data-ix="fade-in-on-scroll">
+    <div class="main-container" data-ix="move-up-on-scroll">
+      <div class="flex-container-4">
+        <div class="two-third">
+          <div class="news-row" style="display:flex;flex-wrap:wrap;">
+		  {% for news in rblogs %}
+            <div class="news-card-container" style="width:48.5%;">
+              <div class="news-card news-1">
+                <div class="news-card-image news-image-1" style="background-image:url({{news.img|image_style('newsbg')}});">
+                  <div class="news-slide-overlay"></div>
+                </div>
+                <div class="avatar-container">
+                  {% if news.icon %}
+			  	<div class="avatar avatar-default" style="background-image:url({{ news.icon|image_style('thumbnail') }})"></div>
+			  {% else %}
+			  	<div class="avatar avatar-default"></div>
+			  {% endif %}
+                </div>
+                <div class="news-slide-text-container">
+                  <h4 class="heading-4">{{ news.title }}</h4>
+                  <p class="caption-text">{{ news.name }}</p>
+                  <p class="news-slide-paragraph">{{ news.summary }}</p>
+				  <a href="{{ path('entity.node.canonical', {'node': news.nid})}}" class="button w-button">Read More</a></div>
+              </div>
+            </div>
+           {% endfor %}
+          </div>
+          <!--<div class="load-more-button"><a href="#" class="button button-4 w-button">Load More</a></div>-->
+        </div>
+        <div class="third">
+          <h2 class="heading-3">Categories</h2>
+		  {% for cat in cats %}
+          <a href="{{ path('entity.node.canonical', {'node': cat.nid})}}" class="categories-row w-inline-block">
+            <div class="category">{{cat.title}}</div>
+            <div class="news-count">
+              <div class="news-number">{{cat.num}}</div>
+            </div>
+          </a>
+		  {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% include '/themes/plasma/footer.html.twig' %}

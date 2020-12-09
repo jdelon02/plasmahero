@@ -1,0 +1,12 @@
+<div class="donate">
+    <div class="main-container">
+	<div class="contextual-region">
+	{{ contextual_links('block_content:block_content=10') }}
+      <div class="donate-cta"><img src="/themes/plasma/images/donate-pin.svg" alt="" class="donate-pin">
+        <div class="donate-text">
+          <div class="donate-p">{{content.body}}</div>
+		  </div>
+		<a href="{{ content['#block_content'].field_link.0.value }}" class="button accent-button w-button">{{ content['#block_content'].field_link_text.0.value }}</a></div>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,350 @@
+<?php 
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+ use \Drupal\block_content\BlockContentInterface;
+function plasma_theme_suggestions_block_alter(&$suggestions, $variables) {
+  $content = $variables['elements']['content'];
+  if (isset($content['#block_content']) && $content['#block_content'] instanceof \Drupal\block_content\BlockContentInterface) {
+    $suggestions[] = 'block__' . $content['#block_content']->bundle();
+  }
+}
+function plasma_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+      $suggestions[] = 'page__' . $node->bundle();
+    }
+  }
+  function plasma_preprocess_page(&$variables) {
+    $variables['login_form'] = FALSE;
+    if (!\Drupal::currentUser()->id()) {
+      $form = Drupal::formBuilder()->getForm(Drupal\user\Form\UserLoginForm::class) ; 
+      $render = Drupal::service('renderer');
+      $variables['login_form'] = $render->renderPlain($form);
+    }
+	
+	//Set subtitle and nid
+	$node = \Drupal::routeMatch()->getParameter('node');
+	if ($node instanceof \Drupal\node\NodeInterface) {
+  		$nid = $node->id();
+		if($node->field_subtitle) {
+			$subtitle = $node->field_subtitle->getValue();
+		} else {
+			$subtitle = '';
+		}
+		$variables['subtitle'] = $subtitle;
+		$variables['nid'] = $nid;
+		if($node->getType() == 'page') {
+			$left = $node->field_body_left->getValue();
+			$right = $node->body->getValue();
+			$variables['left'] = $left;
+			$variables['right'] = $right;
+		}
+	}
+  
+  //Get featured hero on hero page
+  $nodes = \Drupal::entityQuery('node')->condition('type', 'hero')->condition('promote', 1)->condition('status', 1)->execute();
+  $loadeds = \Drupal\node\Entity\Node::loadMultiple($nodes);
+  $fthero = [];  
+  foreach($loadeds as $key => $hero){
+  	$nid = $hero->nid->value;
+  	$title = $hero->title->value;
+	$iframe = $hero->field_video_embed_code->value;
+	if(isset($hero->field_image->target_id)){
+      $img = $hero->field_image->entity->getFileUri();    
+    } else {
+	  $img = '';
+	}
+    $fthero[$key]['img'] = $img;
+	$fthero[$key]['iframe'] = $iframe;
+  	$fthero[$key]['title'] = $title;
+	$fthero[$key]['nid'] = $nid;
+	$fthero[$key]['subtitle'] = $hero->field_subtitle->value;
+	$fthero[$key]['location'] = $hero->field_location->value;
+	$fthero[$key]['body_left'] = $hero->body->value;
+	$fthero[$key]['body_right'] = $hero->field_body->value;
+break;
+  }
+  $variables['fthero'] = $fthero;
+  
+  
+  //Get all other heroes on hero page
+  $nodes = \Drupal::entityQuery('node')->condition('type', 'hero')->condition('promote', 0)->condition('status', 1)->execute();
+  $loadeds = \Drupal\node\Entity\Node::loadMultiple($nodes);
+  $othero = [];  
+  foreach($loadeds as $key => $hero){
+  	$nid = $hero->nid->value;
+  	$title = $hero->title->value;
+	$iframe = $hero->field_video_embed_code->value;
+	if(isset($hero->field_image->target_id)){
+      $img = $hero->field_image->entity->getFileUri();   
+    } else {
+	  $img = '';
+	}
+    $othero[$key]['img'] = $img;
+	$othero[$key]['iframe'] = $iframe;
+  	$othero[$key]['title'] = $title;
+	$othero[$key]['nid'] = $nid;
+	$othero[$key]['subtitle'] = $hero->field_subtitle->value;
+	$othero[$key]['location'] = $hero->field_location->value;
+	$othero[$key]['body_left'] = $hero->body->value;
+	$othero[$key]['body_right'] = $hero->field_body->value;
+  }
+  $variables['othero'] = $othero;
+  
+  
+  //Load in home hero image and text (content type not the top section)
+  $nodes = \Drupal::entityQuery('node')->condition('type', 'hero')->condition('promote', 1)->condition('status', 1)->range(0,1)->execute();
+  $loadeds= \Drupal\node\Entity\Node::loadMultiple($nodes);
+  $heroFields = [];  
+  foreach($loadeds as $key => $hero){
+    if(isset($hero->field_image->target_id)){
+      $img = $hero->field_image->entity->getFileUri();
+      //$url = ImageStyle::load('droplet')->buildUrl($img);    
+    }
+	  $title = $hero->title->value;
+      $heroFields[$key]['img'] = $img;
+	  $heroFields[$key]['title'] = $title;
+      $heroFields[$key]['nid'] = $hero->nid->value;
+	  $heroFields[$key]['name'] = $hero->field_name->value;
+	  $heroFields[$key]['location'] = $hero->field_location->value;
+      $heroFields[$key]['body'] = $hero->body->summary;
+      $heroFields[$key]['subtitle'] = $hero->field_subtitle->value;
+  }
+  $variables['heroFields'] = $heroFields;
+  
+  
+
+  //Load in all heroes
+  $nodes = \Drupal::entityQuery('node')->condition('type', 'hero')->condition('status', 1)->execute();
+  $loadeds= \Drupal\node\Entity\Node::loadMultiple($nodes);
+  $alhero = [];  
+  foreach($loadeds as $key => $hero){ 
+  	$nid = $hero->nid->value;
+  	$title = $hero->title->value;
+	$iframe = $hero->field_video_embed_code->value;
+	if(isset($hero->field_image->target_id)){
+      $img = $hero->field_image->entity->getFileUri();   
+    } else {
+	  $img = '';
+	}
+    $alhero[$key]['img'] = $img;
+	$alhero[$key]['nid'] = $nid;
+	$alhero[$key]['iframe'] = $iframe;
+  	$alhero[$key]['title'] = $title;
+	$alhero[$key]['nid'] = $nid;
+	$alhero[$key]['subtitle'] = $hero->field_subtitle->value;
+	$alhero[$key]['location'] = $hero->field_location->value;
+	$alhero[$key]['body_left'] = $hero->body->value;
+	$alhero[$key]['body_right'] = $hero->field_body->value;
+  }
+  $variables['alhero'] = $alhero;
+  
+  //Load in all blogs 
+  $nodes = \Drupal::entityQuery('node')->condition('type', 'article')->condition('status', 1)->sort('created' , 'DESC')->execute();
+  $loadeds= \Drupal\node\Entity\Node::loadMultiple($nodes);
+  $newsart = [];  
+  foreach($loadeds as $key => $news){
+    if(isset($news->field_image->target_id)){
+      $img = $news->field_image->entity->getFileUri();   
+    }
+	if(isset($news->field_icon->target_id)){
+      $icon = $news->field_icon->entity->getFileUri();   
+    } else {
+	  $icon = '';
+	}
+	  $date = $news->created->value;
+	  $title = $news->title->value;
+      $newsart[$key]['img'] = $img;
+	  $newsart[$key]['date'] = $date;
+	  $newsart[$key]['icon'] = $icon;
+	  $newsart[$key]['title'] = $title;
+      $newsart[$key]['nid'] = $news->nid->value;
+	  $newsart[$key]['name'] = $news->field_name->value;
+      $newsart[$key]['body'] = $news->body->value;
+	  $newsart[$key]['summary'] = $news->body->summary;
+      $newsart[$key]['subtitle'] = $news->field_subtitle->value;
+  }
+  $variables['newsart'] = $newsart;
+  
+  //Load in home last 6 blogs 
+  $nodes = \Drupal::entityQuery('node')->condition('type', 'article')->condition('status', 1)->sort('created' , 'DESC')->range(0,6)->execute();
+  $loadeds= \Drupal\node\Entity\Node::loadMultiple($nodes);
+  $newsslide = [];  
+  foreach($loadeds as $key => $news){
+    if(isset($news->field_image->target_id)){
+      $img = $news->field_image->entity->getFileUri();   
+    }
+	if(isset($news->field_icon->target_id)){
+      $icon = $news->field_icon->entity->getFileUri();   
+    } else {
+	  $icon = '';
+	}
+	  $title = $news->title->value;
+	  $date = $news->created->value;
+	  $newsslide[$key]['date'] = $date;
+      $newsslide[$key]['img'] = $img;
+	  $newsslide[$key]['icon'] = $icon;
+	  $newsslide[$key]['title'] = $title;
+      $newsslide[$key]['nid'] = $news->nid->value;
+	  $newsslide[$key]['name'] = $news->field_name->value;
+      $newsslide[$key]['body'] = $news->body->value;
+	  $newsslide[$key]['summary'] = $news->body->summary;
+      $newsslide[$key]['subtitle'] = $news->field_subtitle->value;
+  }
+  $variables['newsslides'] = $newsslide;
+ 
+ //Get all FAQs
+  $nodes = \Drupal::entityQuery('node')->condition('type', 'faq')->condition('status', 1)->sort('field_weight', 'ASC')->execute();
+  $loadeds = \Drupal\node\Entity\Node::loadMultiple($nodes);
+  $faqs = [];  
+  foreach($loadeds as $key => $faq){
+  	$nid = $faq->nid->value;
+  	$title = $faq->title->value;
+	$iframe = $faq->field_video_embed_code->value;
+	if(isset($faq->field_image->target_id)){
+      $img = $faq->field_image->entity->getFileUri();    
+    } else {
+	  $img = '';
+	}
+	$faqs[$key]['question'] = $faq->field_faq_question->value;
+	$faqs[$key]['answer'] = $faq->body->value;
+  }
+  $variables['faqs'] = $faqs;
+ 
+  
+  //Get all Blog Categories
+  $nodes = \Drupal::entityQuery('node')->condition('type', 'category')->condition('status', 1)->execute();
+  $loadeds = \Drupal\node\Entity\Node::loadMultiple($nodes);
+  $cats = [];  
+  foreach($loadeds as $key => $cat){
+  	if(isset($cat->field_image->target_id)){
+      $img = $cat->field_image->entity->getFileUri();   
+    }
+	if(isset($cat->field_icon->target_id)){
+      $icon = $cat->field_icon->entity->getFileUri();   
+    } else {
+	  $icon = '';
+	}
+	$nodeid = $cat->nid->value;
+	  $num = 0;
+	  $rnodes = \Drupal::entityQuery('node')->condition('type', 'article')->condition('field_tags', $nodeid)->condition('status', 1)->execute();
+	  foreach($rnodes as $kay => $blog){
+	  	$num += 1;
+	  }
+	  
+	  $title = $cat->title->value;
+      $cats[$key]['img'] = $img;
+	  $cats[$key]['icon'] = $icon;
+	  $cats[$key]['title'] = $title;
+      $cats[$key]['nid'] = $cat->nid->value;
+	  $cats[$key]['name'] = $cat->field_name->value;
+      $cats[$key]['body'] = $cat->body->value;
+	  $cats[$key]['summary'] = $cat->body->summary;
+      $cats[$key]['subtitle'] = $cat->field_subtitle->value;
+	  $cats[$key]['num'] = $num;
+  }
+  $variables['cats'] = $cats;
+  
+  //Get all blogs in a category
+  if($node) {
+  $nid = $node->id();
+  }
+  $rnodes = \Drupal::entityQuery('node')->condition('type', 'article')->condition('field_tags', $nid)->condition('status', 1)->execute();
+  $loadeds = \Drupal\node\Entity\Node::loadMultiple($rnodes);
+  $rblogs = [];  
+  foreach($loadeds as $key => $cat){
+  	if(isset($cat->field_image->target_id)){
+      $img = $cat->field_image->entity->getFileUri();   
+    }
+	if(isset($cat->field_icon->target_id)){
+      $icon = $cat->field_icon->entity->getFileUri();   
+    } else {
+	  $icon = '';
+	}
+	  $title = $cat->title->value;
+      $rblogs[$key]['img'] = $img;
+	  $rblogs[$key]['icon'] = $icon;
+	  $rblogs[$key]['title'] = $title;
+      $rblogs[$key]['nid'] = $cat->nid->value;
+	  $rblogs[$key]['name'] = $cat->field_name->value;
+      $rblogs[$key]['body'] = $cat->body->value;
+	  $rblogs[$key]['summary'] = $cat->body->summary;
+      $rblogs[$key]['subtitle'] = $cat->field_subtitle->value;
+  }
+  $variables['rblogs'] = $rblogs;
+  if($nid == 3) {
+  //Map Pins 
+  $mapnodes = \Drupal::entityQuery('node')->condition('type', 'map_pin')->condition('status', 1)->sort('created' , 'DESC')->execute();
+  $loadeds = \Drupal\node\Entity\Node::loadMultiple($mapnodes);
+  $npins = [];  
+  foreach($loadeds as $key => $pin){
+  	$address = $pin->field_address->value;
+	$title = $pin->title->value;
+	$city = $pin->field_city->value;
+	$state = $pin->field_state->value;
+	$country = 'United States';
+	$fulladd =  $address .' '. $city .', '. $state .' '. $country;
+	$formadd = str_replace(' ', '+', $fulladd);
+	$formadd = str_replace('#', '', $formadd);
+	//$geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$formadd.'&key=AIzaSyCqhN20ZF_rFZClNY5uoldJDHUAK2UbhBs&sensor=false');
+	$debug = 'https://maps.google.com/maps/api/geocode/json?address='.$formadd.'&sensor=false&key=AIzaSyCqhN20ZF_rFZClNY5uoldJDHUAK2UbhBs';
+	//echo($debug);
+	//echo("<br/>");
+	$npins[$key]['debug'] = $debug;
+	//$output = json_decode($geocode);
+	//$lat = $output->results[0]->geometry->location->lat;
+	//$long = $output->results[0]->geometry->location->lng;
+	//$point = geocoder('bing',$fulladd);
+	  //$npins[$key]['output'] = $output;
+	  //$npins[$key]['lat'] = $lat;
+      //$npins[$key]['long'] = $long;
+	  $npins[$key]['title'] = $pin->title->value;
+      $npins[$key]['address'] = $pin->field_address->value;
+	  $npins[$key]['body'] = $pin->body->value;
+	  $npins[$key]['city'] = $pin->field_city->value;
+	  $npins[$key]['state'] = $pin->field_state->value;
+	  $npins[$key]['fulladd'] = $fulladd;
+	  //$npins[$key]['point'] = $point;
+	  $npins[$key]['formadd'] = $formadd;
+  }
+  $variables['pins'] = $npins;
+  }
+  if($nid == 566) {
+  	//Map Pins 
+  $mapnodes = \Drupal::entityQuery('node')->condition('type', 'map_pin')->condition('status', 1)->sort('created' , 'DESC')->execute();
+  $loadeds = \Drupal\node\Entity\Node::loadMultiple($mapnodes);
+  $npins = [];  
+  foreach($loadeds as $key => $pin){
+  	$address = $pin->field_address->value;
+	$title = $pin->title->value;
+	$city = $pin->field_city->value;
+	$state = $pin->field_state->value;
+	$country = 'United States';
+	$fulladd =  $address .' '. $city .', '. $state .' '. $country;
+	$formadd = str_replace(' ', '+', $fulladd);
+	$formadd = str_replace('#', '', $formadd);
+	//$geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$formadd.'&key=AIzaSyCqhN20ZF_rFZClNY5uoldJDHUAK2UbhBs&sensor=false');
+	//$debug = 'https://maps.google.com/maps/api/geocode/json?address='.$formadd.'&sensor=false&key=AIzaSyCqhN20ZF_rFZClNY5uoldJDHUAK2UbhBs';
+	//echo($debug);
+	//echo("<br/>");
+	//$npins[$key]['debug'] = $debug;
+	//$output = json_decode($geocode);
+	//$lat = $output->results[0]->geometry->location->lat;
+	//$long = $output->results[0]->geometry->location->lng;
+	//$point = geocoder('bing',$fulladd);
+	  //$npins[$key]['output'] = $output;
+	  //$npins[$key]['lat'] = $lat;
+      //$npins[$key]['long'] = $long;
+	  $npins[$key]['title'] = $pin->title->value;
+      $npins[$key]['address'] = $pin->field_address->value;
+	  $npins[$key]['body'] = $pin->body->value;
+	  $npins[$key]['city'] = $pin->field_city->value;
+	  $npins[$key]['state'] = $pin->field_state->value;
+	  $npins[$key]['fulladd'] = $fulladd;
+	  //$npins[$key]['point'] = $point;
+	  $npins[$key]['formadd'] = $formadd;
+  }
+  $variables['pins'] = $npins;
+  }
+	}
+  ?>

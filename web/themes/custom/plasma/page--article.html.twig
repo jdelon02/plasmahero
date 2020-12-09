@@ -1,0 +1,42 @@
+{% include '/themes/plasma/header.html.twig' %}
+  {% set hdirectory = '/themes/plasma/' %}
+<!--<div class="hero news-article"></div>-->
+  <div class="intro intro-section-2" data-ix="fade-in-on-scroll">
+    <div class="main-container">
+      <div class="heading-section" data-ix="move-up-on-scroll">
+        <h2 class="heading-2">{{node.title.value}}</h2>
+        <p class="subheading">{{node.field_name.value}}</p>
+		<p class="subheading">{{ node.created.value|date('m/d/Y') }}</p>
+        {% if node.field_icon.entity.uri.value != '' %}
+			  	<div class="avatar avatar-default" style="background-image:url({{ node.field_icon.entity.uri.value|image_style('thumbnail') }})"></div>
+			  {% else %}
+			  	<div class="avatar avatar-default"></div>
+			  {% endif %}
+      </div>
+	  {% if node.field_body.value %}
+      <div class="flex-container-4" data-ix="move-up-on-scroll">
+	  
+        <div class="half">
+		{% endif %}
+          {{node.body.value|raw}}
+	  </div>
+	  <div class="half">
+	  	  {{node.field_body.value|raw}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="news" data-ix="fade-in-on-scroll">
+    <div class="main-container center-align" data-ix="move-up-on-scroll">
+      <h2 class="heading-2 white">News &amp; Updates</h2>
+	  <div class="contextual-region">
+	  {{ contextual_links('block_content:block_content=2') }}
+      <div class="paragraph-2">{{drupal_block('block_content:f1423fb6-42d7-462f-92b9-0bfa8e6b596c') }}</div>
+	  </div>
+    </div>
+    <div class="slider-container" data-ix="move-up-on-scroll">
+      {% include '/themes/plasma/slider.html.twig' %}
+    </div>
+  </div>
+  </div>
+  {% include '/themes/plasma/footer.html.twig' %}
