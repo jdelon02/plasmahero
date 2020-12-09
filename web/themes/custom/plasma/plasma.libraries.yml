@@ -2,5 +2,3 @@ jquery-custom:
   version: "3.4.1"
   js:
     js/jquery-3.4.1.min.js: { minified: true, weight: -20 }
-  dependencies:
-    - core/jquery
