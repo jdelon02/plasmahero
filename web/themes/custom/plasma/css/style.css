@@ -39,14 +39,14 @@ div.paragraph-2 p {
 .ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix {
   background-color:#fff;
   border:none;
-  background-image:url(/themes/plasma/images/plasma-bg-1.svg);
+  background-image:url(/themes/custom/plasma/images/plasma-bg-1.svg);
   background-size:contain;
   background-repeat:no-repeat;
   background-position:100%;
   max-height:36px;
 }
 .webform-confirmation-modal--content.ui-dialog-content.ui-widget-content {
-  background-image:url(/themes/plasma/images/plasma-bg-2.svg);	
+  background-image:url(/themes/custom/plasma/images/plasma-bg-2.svg);	
   background-size:200px;
   background-repeat:no-repeat;
   padding-bottom:46px;

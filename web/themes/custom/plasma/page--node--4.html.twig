@@ -1,5 +1,5 @@
-{% include '/themes/plasma/header.html.twig' %}
-{% set hdirectory = '/themes/plasma/' %}
+{% include '/themes/custom/plasma/header.html.twig' %}
+{% set hdirectory = '/themes/custom/plasma/' %}
 <!--<div class="hero commonly-asked-questions">
     <div class="main-container">
       <div class="caption-container">
@@ -19,7 +19,7 @@
       <div class="flex-container-4" data-ix="move-up-on-scroll">
         <div style="display:flex;flex-wrap:wrap;">
          {% for faq in faqs %}
-		 	<div class="faq-container" style="width:50%;"><img src="/themes/plasma/images/faq-icon.svg" alt="" class="faq-icon">
+		 	<div class="faq-container" style="width:50%;"><img src="/themes/custom/plasma/images/faq-icon.svg" alt="" class="faq-icon">
             <div>
               <h2 class="heading-3">{{faq.question}}</h2>
               {{faq.answer|raw}}
@@ -30,4 +30,4 @@
       </div>
     </div>
   </div>
-{% include '/themes/plasma/footer.html.twig' %}
+{% include '/themes/custom/plasma/footer.html.twig' %}
