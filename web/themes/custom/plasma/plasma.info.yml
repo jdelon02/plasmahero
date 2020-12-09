@@ -10,9 +10,6 @@ version: '8.x-1.0'
 core: '8.x'
 project: 'plasma'
 
-dependencies:
-- core/jquery
-
 libraries-override:
   # Replace an entire library.
   core/jquery: plasma/jquery-custom
