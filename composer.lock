@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "20a0cb62dc1d9e0fd2b59c7fb39392ac",
+    "content-hash": "f629e9b32d128bfcd58142746b51de66",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1341,6 +1341,54 @@
             }
         },
         {
+            "name": "drupal/config_delete",
+            "version": "1.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/config_delete.git",
+                "reference": "8.x-1.17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_delete-8.x-1.17.zip",
+                "reference": "8.x-1.17",
+                "shasum": "3213000ffee27fb2595d419457e5a0e8182a1308"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.17",
+                    "datestamp": "1585809608",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Goran Nikolovski",
+                    "homepage": "https://gorannikolovski.com",
+                    "email": "goran@gorannikolovski.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Delete configuration items from the UI.",
+            "homepage": "https://www.drupal.org/project/config_delete",
+            "support": {
+                "source": "https://git.drupalcode.org/project/config_delete",
+                "issues": "https://www.drupal.org/project/issues/config_delete",
+                "email": "goran@gorannikolovski.com"
+            }
+        },
+        {
             "name": "drupal/config_direct_save",
             "version": "1.2.0",
             "source": {
@@ -1385,6 +1433,72 @@
             }
         },
         {
+            "name": "drupal/config_filter",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/config_filter.git",
+                "reference": "8.x-1.8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_filter-8.x-1.8.zip",
+                "reference": "8.x-1.8",
+                "shasum": "5def5f97e79d6f5af6bb7007f012443475c90bfe"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "suggest": {
+                "drupal/config_split": "Split site configuration for different environments."
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.8",
+                    "datestamp": "1603870062",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Fabian Bircher",
+                    "homepage": "https://www.drupal.org/u/bircher",
+                    "email": "opensource@fabianbircher.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Nuvole Web",
+                    "homepage": "http://nuvole.org",
+                    "email": "info@nuvole.org",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "pescetti",
+                    "homepage": "https://www.drupal.org/user/436244"
+                }
+            ],
+            "description": "Config Filter allows other modules to interact with a ConfigStorage through filter plugins.",
+            "homepage": "https://www.drupal.org/project/config_filter",
+            "keywords": [
+                "Drupal",
+                "configuration",
+                "configuration management"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/config_filter",
+                "issues": "https://www.drupal.org/project/issues/config_filter",
+                "slack": "https://drupal.slack.com/archives/C45342CDD"
+            }
+        },
+        {
             "name": "drupal/config_installer",
             "version": "1.8.0",
             "source": {
@@ -1425,6 +1539,82 @@
             "homepage": "https://www.drupal.org/project/config_installer",
             "support": {
                 "source": "https://git.drupalcode.org/project/config_installer"
+            }
+        },
+        {
+            "name": "drupal/config_split",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/config_split.git",
+                "reference": "8.x-1.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_split-8.x-1.7.zip",
+                "reference": "8.x-1.7",
+                "shasum": "3cd524ebc0b52db31a6bef2c55693f4e62890b4f"
+            },
+            "require": {
+                "drupal/config_filter": "^1",
+                "drupal/core": "^8.8 || ^9"
+            },
+            "conflict": {
+                "drupal/console": "<1.3.2"
+            },
+            "suggest": {
+                "drupal/chosen": "Chosen uses the Chosen jQuery plugin to make the <select> elements more user-friendly.",
+                "drupal/select2_all": "Applies the Select2 library to all select fields on the site similar to the Chosen module."
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.7",
+                    "datestamp": "1603782947",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Fabian Bircher",
+                    "homepage": "https://www.drupal.org/u/bircher",
+                    "email": "opensource@fabianbircher.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Nuvole Web",
+                    "homepage": "http://nuvole.org",
+                    "email": "info@nuvole.org",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "pescetti",
+                    "homepage": "https://www.drupal.org/user/436244"
+                }
+            ],
+            "description": "Configuration filter for importing and exporting extra config",
+            "homepage": "https://www.drupal.org/project/config_split",
+            "keywords": [
+                "Drupal",
+                "configuration",
+                "configuration management"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/config_split",
+                "issues": "https://www.drupal.org/project/issues/config_split",
+                "slack": "https://drupal.slack.com/archives/C45342CDD"
             }
         },
         {
@@ -2325,6 +2515,58 @@
             "time": "2018-02-09T18:02:28+00:00"
         },
         {
+            "name": "drupal/environment_indicator",
+            "version": "4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/environment_indicator.git",
+                "reference": "4.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/environment_indicator-4.0.2.zip",
+                "reference": "4.0.2",
+                "shasum": "98fe90da64cf2417b3fd72bde0da20c8cfe75d62"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.2",
+                    "datestamp": "1605388690",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "e0ipso",
+                    "homepage": "https://www.drupal.org/user/550110"
+                },
+                {
+                    "name": "mrfelton",
+                    "homepage": "https://www.drupal.org/user/305669"
+                },
+                {
+                    "name": "pratik_kamble",
+                    "homepage": "https://www.drupal.org/user/3204909"
+                }
+            ],
+            "description": "Adds a color indicator for the different environments.",
+            "homepage": "https://www.drupal.org/project/environment_indicator",
+            "support": {
+                "source": "https://git.drupalcode.org/project/environment_indicator"
+            }
+        },
+        {
             "name": "drupal/focal_point",
             "version": "1.5.0",
             "source": {
@@ -2579,6 +2821,54 @@
                 "source": "https://git.drupalcode.org/project/metatag",
                 "issues": "https://www.drupal.org/project/issues/metatag",
                 "docs": "https://www.drupal.org/docs/8/modules/metatag"
+            }
+        },
+        {
+            "name": "drupal/module_filter",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/module_filter.git",
+                "reference": "8.x-3.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/module_filter-8.x-3.1.zip",
+                "reference": "8.x-3.1",
+                "shasum": "39d627ce60280ae54bcf9beae217b85cce1969e4"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-3.1",
+                    "datestamp": "1507650844",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "andrey.troeglazov",
+                    "homepage": "https://www.drupal.org/user/3145389"
+                },
+                {
+                    "name": "greenSkin",
+                    "homepage": "https://www.drupal.org/user/173855"
+                }
+            ],
+            "description": "Filter the modules list.",
+            "homepage": "https://www.drupal.org/project/module_filter",
+            "support": {
+                "source": "https://git.drupalcode.org/project/module_filter"
             }
         },
         {
